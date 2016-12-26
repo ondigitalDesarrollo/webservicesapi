@@ -57,6 +57,11 @@ function MetodoConsulta($param_id,$param_text){
 }
 
 
+// Invocar Servicio Web
+$HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
+$sError->service($HTTP_RAW_POST_DATA);
+
+
 
 
 
