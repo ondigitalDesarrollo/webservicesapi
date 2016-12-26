@@ -1,22 +1,35 @@
 <?php
 
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * author: Arnold Restrepo Hernandez
+ * version: 1.0
+ * comments: Ejercicios de Web Services utilizando PHP
  */
 
 
+// Incluir la libreria
+include 'lib/nusoap.php';
 
-// Proceso para hacer una peticio de servicios web
+//Activar el metodo
+$server = new soap_server();
 
-/*
-$servicio   = "http://appcencosud.2xy.co/api/";     //url del servicio
-$parametros = array();                              // parametros de la llamada
-$parametros['idioma'] = "es";
-$parametros['usuario'] = "ondigital";
-$parametros['clave'] = "12AS32YG79";
-$client = new SoapClient($servicio,$parametros);
-$result = $client->getNoticias($parametros);        // LLamar al método que nos interesa con los parametros
-*/
+//Parametros de salida
+$server->configureWSDL('servidor','urn:Servidor');
+
+
+//Configuracion de la funcion
+$server->register('MetodoConsulta',
+        array('param_id' => 'xsd:string','param_text' => 'xsd:string'),
+        array('return' => 'xsd:string'),
+        'urn:MetodoConsultawsdl',
+        'urn:MetodoConsultawsdl#MetodoConsulta',
+        'rpc',
+        'encoded',
+        'Retorna el datos' 
+);
+
+
+
+
+
 
